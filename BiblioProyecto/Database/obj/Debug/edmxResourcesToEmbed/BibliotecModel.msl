@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BIBLIOTECAPRModelStoreContainer" CdmEntityContainer="BIBLIOTECAPREntities">
+    <EntitySetMapping Name="AUTORES">
+      <EntityTypeMapping TypeName="BIBLIOTECAPRModel.AUTORES">
+        <MappingFragment StoreEntitySet="AUTORES">
+          <ScalarProperty Name="ID_AUTOR" ColumnName="ID_AUTOR" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="NACIONALIDAD" ColumnName="NACIONALIDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LIBROS">
+      <EntityTypeMapping TypeName="BIBLIOTECAPRModel.LIBROS">
+        <MappingFragment StoreEntitySet="LIBROS">
+          <ScalarProperty Name="ID_LIBRO" ColumnName="ID_LIBRO" />
+          <ScalarProperty Name="ID_AUTOR" ColumnName="ID_AUTOR" />
+          <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+          <ScalarProperty Name="GENERO" ColumnName="GENERO" />
+          <ScalarProperty Name="ANIO_PUBLICACION" ColumnName="ANIO_PUBLICACION" />
+          <ScalarProperty Name="VOLUMEN" ColumnName="VOLUMEN" />
+          <ScalarProperty Name="CAPITULO" ColumnName="CAPITULO" />
+          <ScalarProperty Name="EDITORIAL" ColumnName="EDITORIAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRESTAMOS">
+      <EntityTypeMapping TypeName="BIBLIOTECAPRModel.PRESTAMOS">
+        <MappingFragment StoreEntitySet="PRESTAMOS">
+          <ScalarProperty Name="ID_LIBRO" ColumnName="ID_LIBRO" />
+          <ScalarProperty Name="ID_PRESTAMO" ColumnName="ID_PRESTAMO" />
+          <ScalarProperty Name="FECHA_PRESTAMO" ColumnName="FECHA_PRESTAMO" />
+          <ScalarProperty Name="FECHA_DEV" ColumnName="FECHA_DEV" />
+          <ScalarProperty Name="NOMBRE_USUARIO" ColumnName="NOMBRE_USUARIO" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="PRESTAMO_DEVUELTO" ColumnName="PRESTAMO_DEVUELTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

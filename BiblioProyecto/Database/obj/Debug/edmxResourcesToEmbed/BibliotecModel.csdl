@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BIBLIOTECAPRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AUTORES">
+    <Key>
+      <PropertyRef Name="ID_AUTOR" />
+    </Key>
+    <Property Name="ID_AUTOR" Type="Int32" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="APELLIDO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NACIONALIDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="LIBROS" Relationship="Self.FK_LIBROS_AUTORES" FromRole="AUTORES" ToRole="LIBROS" />
+  </EntityType>
+  <EntityType Name="LIBROS">
+    <Key>
+      <PropertyRef Name="ID_LIBRO" />
+    </Key>
+    <Property Name="ID_LIBRO" Type="Int32" Nullable="false" />
+    <Property Name="ID_AUTOR" Type="Int32" Nullable="false" />
+    <Property Name="TITULO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GENERO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ANIO_PUBLICACION" Type="Int32" Nullable="false" />
+    <Property Name="VOLUMEN" Type="Int32" Nullable="false" />
+    <Property Name="CAPITULO" Type="Int32" Nullable="false" />
+    <Property Name="EDITORIAL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AUTORES" Relationship="Self.FK_LIBROS_AUTORES" FromRole="LIBROS" ToRole="AUTORES" />
+    <NavigationProperty Name="PRESTAMOS" Relationship="Self.FK_PRESTAMOS_LIBROS" FromRole="LIBROS" ToRole="PRESTAMOS" />
+  </EntityType>
+  <EntityType Name="PRESTAMOS">
+    <Key>
+      <PropertyRef Name="ID_PRESTAMO" />
+    </Key>
+    <Property Name="ID_LIBRO" Type="Int32" Nullable="false" />
+    <Property Name="ID_PRESTAMO" Type="Int32" Nullable="false" />
+    <Property Name="FECHA_PRESTAMO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHA_DEV" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NOMBRE_USUARIO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TELEFONO" Type="Int32" Nullable="false" />
+    <Property Name="CORREO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DIRECCION" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PRESTAMO_DEVUELTO" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="LIBROS" Relationship="Self.FK_PRESTAMOS_LIBROS" FromRole="PRESTAMOS" ToRole="LIBROS" />
+  </EntityType>
+  <Association Name="FK_LIBROS_AUTORES">
+    <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="1" />
+    <End Role="LIBROS" Type="Self.LIBROS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUTORES">
+        <PropertyRef Name="ID_AUTOR" />
+      </Principal>
+      <Dependent Role="LIBROS">
+        <PropertyRef Name="ID_AUTOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRESTAMOS_LIBROS">
+    <End Role="LIBROS" Type="Self.LIBROS" Multiplicity="1" />
+    <End Role="PRESTAMOS" Type="Self.PRESTAMOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LIBROS">
+        <PropertyRef Name="ID_LIBRO" />
+      </Principal>
+      <Dependent Role="PRESTAMOS">
+        <PropertyRef Name="ID_LIBRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BIBLIOTECAPREntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AUTORES" EntityType="Self.AUTORES" />
+    <EntitySet Name="LIBROS" EntityType="Self.LIBROS" />
+    <EntitySet Name="PRESTAMOS" EntityType="Self.PRESTAMOS" />
+    <AssociationSet Name="FK_LIBROS_AUTORES" Association="Self.FK_LIBROS_AUTORES">
+      <End Role="AUTORES" EntitySet="AUTORES" />
+      <End Role="LIBROS" EntitySet="LIBROS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRESTAMOS_LIBROS" Association="Self.FK_PRESTAMOS_LIBROS">
+      <End Role="LIBROS" EntitySet="LIBROS" />
+      <End Role="PRESTAMOS" EntitySet="PRESTAMOS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

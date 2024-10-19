@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BIBLIOTECAPRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AUTORES">
+    <Key>
+      <PropertyRef Name="ID_AUTOR" />
+    </Key>
+    <Property Name="ID_AUTOR" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="APELLIDO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="NACIONALIDAD" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LIBROS">
+    <Key>
+      <PropertyRef Name="ID_LIBRO" />
+    </Key>
+    <Property Name="ID_LIBRO" Type="int" Nullable="false" />
+    <Property Name="ID_AUTOR" Type="int" Nullable="false" />
+    <Property Name="TITULO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="GENERO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ANIO_PUBLICACION" Type="int" Nullable="false" />
+    <Property Name="VOLUMEN" Type="int" Nullable="false" />
+    <Property Name="CAPITULO" Type="int" Nullable="false" />
+    <Property Name="EDITORIAL" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRESTAMOS">
+    <Key>
+      <PropertyRef Name="ID_PRESTAMO" />
+    </Key>
+    <Property Name="ID_LIBRO" Type="int" Nullable="false" />
+    <Property Name="ID_PRESTAMO" Type="int" Nullable="false" />
+    <Property Name="FECHA_PRESTAMO" Type="datetime" Nullable="false" />
+    <Property Name="FECHA_DEV" Type="datetime" Nullable="false" />
+    <Property Name="NOMBRE_USUARIO" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="TELEFONO" Type="int" Nullable="false" />
+    <Property Name="CORREO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="PRESTAMO_DEVUELTO" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_LIBROS_AUTORES">
+    <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="1" />
+    <End Role="LIBROS" Type="Self.LIBROS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUTORES">
+        <PropertyRef Name="ID_AUTOR" />
+      </Principal>
+      <Dependent Role="LIBROS">
+        <PropertyRef Name="ID_AUTOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRESTAMOS_LIBROS">
+    <End Role="LIBROS" Type="Self.LIBROS" Multiplicity="1" />
+    <End Role="PRESTAMOS" Type="Self.PRESTAMOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LIBROS">
+        <PropertyRef Name="ID_LIBRO" />
+      </Principal>
+      <Dependent Role="PRESTAMOS">
+        <PropertyRef Name="ID_LIBRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BIBLIOTECAPRModelStoreContainer">
+    <EntitySet Name="AUTORES" EntityType="Self.AUTORES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LIBROS" EntityType="Self.LIBROS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRESTAMOS" EntityType="Self.PRESTAMOS" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_LIBROS_AUTORES" Association="Self.FK_LIBROS_AUTORES">
+      <End Role="AUTORES" EntitySet="AUTORES" />
+      <End Role="LIBROS" EntitySet="LIBROS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRESTAMOS_LIBROS" Association="Self.FK_PRESTAMOS_LIBROS">
+      <End Role="LIBROS" EntitySet="LIBROS" />
+      <End Role="PRESTAMOS" EntitySet="PRESTAMOS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

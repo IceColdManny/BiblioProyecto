@@ -1,0 +1,12 @@
+C:\Users\manue\Documents\Programas\Visual (C#)\BiblioProyecto\Database\bin\Debug\Database.dll.config
+C:\Users\manue\Documents\Programas\Visual (C#)\BiblioProyecto\Database\bin\Debug\Database.dll
+C:\Users\manue\Documents\Programas\Visual (C#)\BiblioProyecto\Database\bin\Debug\Database.pdb
+C:\Users\manue\Documents\Programas\Visual (C#)\BiblioProyecto\Database\bin\Debug\EntityFramework.dll
+C:\Users\manue\Documents\Programas\Visual (C#)\BiblioProyecto\Database\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\manue\Documents\Programas\Visual (C#)\BiblioProyecto\Database\bin\Debug\EntityFramework.xml
+C:\Users\manue\Documents\Programas\Visual (C#)\BiblioProyecto\Database\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\manue\Documents\Programas\Visual (C#)\BiblioProyecto\Database\obj\Debug\Database.csproj.AssemblyReference.cache
+C:\Users\manue\Documents\Programas\Visual (C#)\BiblioProyecto\Database\obj\Debug\Database.csproj.CoreCompileInputs.cache
+C:\Users\manue\Documents\Programas\Visual (C#)\BiblioProyecto\Database\obj\Debug\Database.csproj.Up2Date
+C:\Users\manue\Documents\Programas\Visual (C#)\BiblioProyecto\Database\obj\Debug\Database.dll
+C:\Users\manue\Documents\Programas\Visual (C#)\BiblioProyecto\Database\obj\Debug\Database.pdb
